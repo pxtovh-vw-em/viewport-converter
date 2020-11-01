@@ -1,0 +1,43 @@
+.heading{
+    height: 60px;
+}
+.heading h1{
+    font-size: 20px;
+}
+
+.main{
+    padding: 20px 5px 0px 5px;
+    background-color: #ffffff;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+}
+.box_1, .box_2, .box_3, .box_4{
+    width: 100%;
+    margin: 20px 0px 0px 0px;
+    padding: 10px 0px 20px 0px;
+    display: block;
+    margin: auto;
+}
+
+h3{
+    font-size: 16px;
+    padding: 10px 10px 10px 10px;
+}
+.highlight{
+    font-size: 20px;
+}
+
+.pixelToVH, .pixelToVW, .vhToPixel, .vwToPixel, .emToPixel, .pixelToem, .perToPixel, .pixelToper{
+    max-width: 50px;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+}
+
+.result{
+    font-size: 20px;
+    width: 200px;
+    padding: 5px 10px 5px 10px;
+}

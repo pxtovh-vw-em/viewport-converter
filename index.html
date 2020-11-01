@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pixel to VH | VW | EM | % converter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./style/style.css"/>
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 1050px)" href="./style/midiumscreen.css">
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="./style/smallscreen.css">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+    </head>
+    <body>
+        <div class="heading">
+            <h1>Pixel to VH | VW | EM | % converter</h1>
+        </div>
+        
+        <div class="main">
+            <div class="container"> <!--for grid-->
+
+                <div class="box_1">   
+                    <!-- px -> vh -->
+                    <h3>Convert From <span class="highlight">PX</span>  to <span class="highlight">VH</span></h3>
+                    <input class="pixelToVH" type="number" placeholder="PX" onkeyup="pixelToVH(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "4">
+
+                    <span class="result" id="pixelToVH">VH</span>
+                    <br><br>
+                    <!-- px -> wh -->
+                    <h3>Convert From <span class="highlight">PX</span>  to <span class="highlight">VW</span></h3> 
+                    <input class="pixelToVW" type="number" placeholder="PX" onkeyup="pixelToVW(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "4">
+                    
+                    <span class="result" id="pixelToVW">VW</span>
+                </div>
+
+                <!-- vh,vw to px -->
+
+                <div class="box_2">   
+                    <!-- vh -> px -->
+                    <h3>Convert From <span class="highlight">VH</span> to <span class="highlight">PX</span></h3>
+                    <input class="vhToPixel" type="number" placeholder="VH"  onkeyup="vhToPixel(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6">
+                    
+                    <span class="result" id="vhToPixel">PX</span>
+                    <br><br>
+                    <!-- vw -> px -->
+                    <h3>Convert From <span class="highlight">VW</span> to <span class="highlight">PX</span></h3>
+                    <input class="vwToPixel" type="number" placeholder="VW" onkeyup="vwToPixel(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6">
+                    
+                    <span class="result" id="vwToPixel">PX</span>
+                </div>
+
+                <!-- em,rem to px -->
+
+                <div class="box_3">   
+                    <!-- vh -> px -->
+                    <h3>Convert Font <span class="highlight">EM</span> to <span class="highlight">PX</span> (16px)</h3>
+                    <input class="emToPixel" type="number" placeholder="EM"  onkeyup="emToPixel(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6">
+                    
+                    <span class="result" id="emToPixel">PX</span>
+                    <br><br>
+                    <!-- vw -> px -->
+                    <h3>Convert Font <span class="highlight">PX</span> to <span class="highlight">EM</span> (16px)</h3>
+                    <input class="pixelToem" type="number" placeholder="PX" onkeyup="pixelToem(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6">
+                    
+                    <span class="result" id="pixelToem">EM</span>
+                </div>
+
+                <!-- per to px -->
+
+                <div class="box_4">   
+                    <!-- vh -> px -->
+                    <h3>Convert Font <span class="highlight">%</span> to <span class="highlight">PX</span> (16px)</h3>
+                    <input class="perToPixel" type="number" placeholder="%"  onkeyup="perToPixel(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6">
+                    
+                    <span class="result" id="perToPixel">PX</span>
+                    <br><br>
+                    <!-- vw -> px -->
+                    <h3>Convert Font <span class="highlight">PX</span> to <span class="highlight">%</span> (16px)</h3>
+                    <input class="pixelToper" type="number" placeholder="PX" onkeyup="pixelToper(this.value);"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number"
+                    maxlength = "6">
+                    
+                    <span class="result" id="pixelToper">%</span>
+                </div>
+            
+            </div>
+        </div>
+
+        <div class="footer">
+            <h4>COPYRIGHT (C) 2020 || Pixel to viewport conversion || Designed and Developed by <span class="footer_name">Akhil Ankola</span></h4>
+        </div>
+
+
+        <script>
+            function pixelToVH(value) {
+              return document.querySelector("#pixelToVH").innerHTML = `${((100 * value) / window.innerHeight).toFixed(5)}vh <button onclick="copyToClipboard('#pixelToVH')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function pixelToVW(value) {
+              return document.querySelector("#pixelToVW").innerHTML = `${((100 * value) / window.innerWidth).toFixed(5)}vw  <button onclick="copyToClipboard('#pixelToVW')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function vhToPixel(value) {
+              return document.querySelector("#vhToPixel").innerHTML = `${((window.innerHeight * value) / 100).toFixed(5)}px <button onclick="copyToClipboard('#vhToPixel')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function vwToPixel(value) {
+              return document.querySelector("#vwToPixel").innerHTML = `${((window.innerWidth * value) / 100).toFixed(5)}px  <button onclick="copyToClipboard('#vwToPixel')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function emToPixel(value) {
+              return document.querySelector("#emToPixel").innerHTML = `${((window.innerHeight/window.innerHeight * value * 16)).toFixed(3)}px <button onclick="copyToClipboard('#emToPixel')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function pixelToem(value) {
+              return document.querySelector("#pixelToem").innerHTML = `${((window.innerHeight/window.innerHeight * value / 16)).toFixed(3)}em  <button onclick="copyToClipboard('#pixelToem')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function perToPixel(value) {
+              return document.querySelector("#perToPixel").innerHTML = `${((window.innerHeight/window.innerHeight * value / 6.25)).toFixed(3)}px <button onclick="copyToClipboard('#perToPixel')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+            function pixelToper(value) {
+              return document.querySelector("#pixelToper").innerHTML = `${((window.innerHeight/window.innerHeight * value * 6.25)).toFixed(3)}%  <button onclick="copyToClipboard('#pixelToper')"><img src="./img/copy (1).png" alt="copy" width="20" height="20"></button>`;
+            }
+          
+            window.addEventListener('resize', updateMeasurements)
+            function updateMeasurements() {
+              const pixelToVHValue = document.querySelector('.pixelToVH').value
+              const pixelToVWValue = document.querySelector('.pixelToVW').value
+              const vhToPixelValue = document.querySelector('.vhToPixel').value
+              const vwToPixelValue = document.querySelector('.vwToPixel').value
+              const emToPixelValue = document.querySelector('.emToPixel').value
+              const pixelToEMValue = document.querySelector('.pixelToem').value
+              const perToPixelValue = document.querySelector('.perToPixel').value
+              const pixelToPerValue = document.querySelector('.pixelToper').value
+              pixelToVH(pixelToVHValue)
+              pixelToVW(pixelToVWValue)
+              vhToPixel(vhToPixelValue)
+              vwToPixel(vwToPixelValue) 
+              emToPixel(emToPixelValue)
+              pixelToem(pixelToEMValue)
+              perToPixel(perToPixelValue)
+              pixelToper(pixelToPerValue)
+            }
+          
+            function copyToClipboard(element) {
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val($(element).text()).select();
+                document.execCommand("copy");
+                $temp.remove();
+            }
+        </script>
+
+
+    </body>
+</html>
